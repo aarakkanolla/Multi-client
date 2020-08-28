@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   postgres:
     image: 'postgres:latest'
@@ -12,6 +12,8 @@ services:
     ports:
       - '3050:80'
   api:
+    depends_on:
+      - postgres
     build:
       dockerfile: Dockerfile.dev
       context: ./server
